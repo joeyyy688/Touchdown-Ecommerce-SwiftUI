@@ -20,3 +20,11 @@ let playersData: [PlayerModel] = jsonLoader("player.json")
 let categoryData: [CategoryModel] = jsonLoader("category.json")
 let productData: [ProductModel] = jsonLoader("product.json")
 let brandData: [BrandModel] = jsonLoader("brand.json")
+
+// MARK: - LAYOUT
+
+let columnSpacing: CGFloat = 10
+let rowSpacing: CGFloat = 10
+var gridLayout: [GridItem] {
+    return Array(repeating: GridItem(.flexible(), spacing: rowSpacing), count: 2)
+}

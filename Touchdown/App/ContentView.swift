@@ -32,12 +32,25 @@ struct ContentView: View {
                             .cornerRadius(10)
                             .padding(15)
                             .frame(width: 400, height: 240)
+                        
+                        CategoryGridView()
+                        
+                        TitleView(title: "Helmets")
+                        
+                        LazyVGrid(columns: gridLayout, spacing: 20, content: {
+                            ForEach(productData){ item in
+                                ProductItemView(productItem: item)
+                            }
+                        })
+                        .padding(.horizontal)
+                        
+                        FooterView()
+                            .padding(.horizontal)
                     }
                 }
                     
                 
-                FooterView()
-                    .padding(.horizontal)
+               
             }
             .background(colorBackground.ignoresSafeArea(.all, edges: .all))
         }//: ZSTACK
