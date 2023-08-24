@@ -55,7 +55,8 @@ struct NavigationBarView: View {
                         .font(.title)
                     .foregroundColor(.black)
                     
-                    Circle().fill(.red)
+                    Circle()
+                        .fill(.red)
                         .frame(width: 15, height: 15, alignment: .center)
                         .offset(x: 13, y: -11)
                 }//: ZSTACK

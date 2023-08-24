@@ -26,7 +26,15 @@ struct ContentView: View {
                     .background(.white)
                     .shadow(color: .black.opacity(0.05), radius: 5, x: 5, y: 5)
                 
-                Spacer()
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack {
+                        FeaturedItemView(playersData: playersData)
+                            .cornerRadius(10)
+                            .padding(15)
+                            .frame(width: 400, height: 240)
+                    }
+                }
+                    
                 
                 FooterView()
                     .padding(.horizontal)
