@@ -26,6 +26,7 @@ struct ProductItemView: View {
             
             Text(productItem.name)
                 .font(.system(.title3, weight: .heavy))
+                .foregroundColor(.black)
             
             Text(productItem.formattedPrice)
                 .fontWeight(.semibold)

@@ -24,7 +24,7 @@ struct CategoryGridView: View {
             .frame(height: 140)
             .padding(.horizontal, 15)
             .padding(.vertical, 10)
-        }
+        }//: SCROLLVIEW
     }
 }
 

@@ -17,44 +17,55 @@ struct ContentView: View {
     
     
     var body: some View {
-        ZStack {
-            VStack(spacing: 0){
-                NavigationBarView()
-                    .padding(.horizontal)
-                    .padding(.bottom)
-                    .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
-                    .background(.white)
-                    .shadow(color: .black.opacity(0.05), radius: 5, x: 5, y: 5)
-                
-                ScrollView(.vertical, showsIndicators: false) {
-                    VStack {
-                        FeaturedItemView(playersData: playersData)
-                            .cornerRadius(10)
-                            .padding(15)
-                            .frame(width: 400, height: 240)
-                        
-                        CategoryGridView()
-                        
-                        TitleView(title: "Helmets")
-                        
-                        LazyVGrid(columns: gridLayout, spacing: 20, content: {
-                            ForEach(productData){ item in
-                                ProductItemView(productItem: item)
-                            }
-                        })
+        NavigationView {
+            ZStack {
+                VStack(spacing: 0){
+                    NavigationBarView()
                         .padding(.horizontal)
-                        
-                        FooterView()
-                            .padding(.horizontal)
-                    }
-                }
+                        .padding(.bottom)
+                        .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
+                        .background(.white)
+                        .shadow(color: .black.opacity(0.05), radius: 5, x: 5, y: 5)
                     
-                
-               
-            }
-            .background(colorBackground.ignoresSafeArea(.all, edges: .all))
-        }//: ZSTACK
-        .ignoresSafeArea(.all, edges: .top)
+                    ScrollView(.vertical, showsIndicators: false) {
+                        VStack {
+                            FeaturedItemView(playersData: playersData)
+                                .cornerRadius(10)
+                                .padding(15)
+                                .frame(width: 400, height: 240)
+                            
+                            CategoryGridView()
+                            
+                            TitleView(title: "Helmets")
+                            
+                            LazyVGrid(columns: gridLayout, spacing: 20, content: {
+                                ForEach(productData){ item in
+                                    NavigationLink(
+                                        destination: {
+                                        ProductDetailView(productItem: item)
+                                    }, label: {
+                                        ProductItemView(productItem: item)
+                                    })
+                                }
+                            })
+                            .padding(.horizontal)
+                            
+                            TitleView(title: "Brands")
+                            
+                            BrandGridView()
+                            
+                            FooterView()
+                                .padding(.horizontal)
+                        }
+                    }
+                        
+                    
+                   
+                }
+                .background(colorBackground.ignoresSafeArea(.all, edges: .all))
+            }//: ZSTACK
+            .ignoresSafeArea(.all, edges: .top)
+        }
     }
 }
 
