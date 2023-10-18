@@ -19,10 +19,46 @@ struct ProductDetailView: View {
                 .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
                 .padding(.bottom)
             
-            Text(productItem.name)
+            HeaderDetailView(product: productItem)
             
-            Spacer()
+            TopPartDetailView(product: productItem)
+                .padding(.horizontal)
+                .zIndex(1)
+            
+            VStack(alignment: .center, spacing: 0) {
+                
+                RatingsSizesDetailView()
+                    .padding(.top, -40)
+                    .padding(.bottom, 20)
+                
+                ScrollView(.vertical, showsIndicators: false) {
+                    
+                    Text(productItem.description)
+                        .font(.system(.body, design: .rounded))
+                        .foregroundColor(.gray)
+                        .multilineTextAlignment(.leading)
+                }
+                
+                QuantityFavouriteDetailView()
+                    .padding(.vertical, 7)
+                
+                //Spacer()
+                
+                AddToCartDetailView(productItemColor: productItem.preferredColor)
+                    .padding(.vertical, 15)
+                
+                
+                Spacer()
+            }
+            .padding(.horizontal)
+            .background(
+                Color.white
+                    .clipShape(CustomShape())
+                    .padding(.top, -120)
+                    .padding(.trailing, -5)
+            )
         }
+        .zIndex(0)
         .ignoresSafeArea(.all, edges: .all)
         .background(
             productItem.preferredColor

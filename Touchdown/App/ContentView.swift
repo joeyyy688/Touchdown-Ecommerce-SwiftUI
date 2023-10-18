@@ -43,6 +43,7 @@ struct ContentView: View {
                                     NavigationLink(
                                         destination: {
                                         ProductDetailView(productItem: item)
+                                                //.navigationBarBackButtonHidden(true)
                                     }, label: {
                                         ProductItemView(productItem: item)
                                     })
